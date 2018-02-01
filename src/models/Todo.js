@@ -6,7 +6,7 @@ chain promises to it.
 all() is a static method, meaning it can be called without there being
 an instance of the class containing the static method. This will allow us to call
 all() in the following way (without instantiating the class with new)
-:*/
+: let todos = TodoModel.all() */
 import axios from 'axios'
 
 class TodoModel {

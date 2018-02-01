@@ -1,23 +1,14 @@
 import React, {Component} from 'react'
-import Todo from './Todo'
 
-/*When we write this component we know that if we pass it a todo, as a prop,
-that has both an id and a body, that it will render. AND it will render the same way every time*/
-class Todos extends Component {
+class Todo extends Component {
   render(){
-    let todos = this.props.todos.map( (todo) => {
-      return (
-        <Todo
-          key={todo._id}
-          todo={todo}/>
-      )
-    })
     return(
-      <div className="todos">
-        {todos}
-      </div>
+      // props being passed from one component to the next
+      <p data-todos-index={this.props.todo.id}>
+        <span>{this.props.todo.body}</span>
+      </p>
     )
   }
 }
 
-export default Todos
+export default Todo
