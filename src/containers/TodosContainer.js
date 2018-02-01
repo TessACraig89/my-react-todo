@@ -1,3 +1,5 @@
+// At the top import the component
+import CreateTodoForm from '../components/CreateTodoForm'
 //  simple React component
 // curly braces? only importing a specific module of the react-router-dom and name spacing it within Route
 import React, {Component} from 'react'
@@ -11,6 +13,19 @@ class TodosContainer extends Component {
     this.state = {
       todos: []
     }
+    // pass the createTodo function of THIS container component TO the CreateTodoForm component, bind(this) so that this is bound to the container component.
+    this.createTodo = this.createTodo.bind(this);
+  }
+  createTodo(todo) {
+    let newTodo = {
+        body: todo,
+        completed: false
+    }
+    TodoModel.create(newTodo).then((res) => {
+        let todos = this.state.todos
+        let newTodos = todos.push(res.data)
+        this.setState({newTodos})
+    })
   }
   //This function leverages our model to retrieve our todos from our backend. In the promise of that request we set the state of this container component to have todos be the value returned from the response. Any time setState is invoked the component re-renders.
   //hooks are events that we can trigger functionality on, componentDidMount is a reserved hook that happens after a component renders
@@ -31,6 +46,9 @@ class TodosContainer extends Component {
         {/*How does each individual todo know about the todo they need to render? From the state of the most parent container, TodosContainer*/}
         <Todos
           todos={this.state.todos} />
+        <CreateTodoForm
+            reateTodo={ this.createTodo }
+        />
       </div>
     )
   }
