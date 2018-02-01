@@ -11,6 +11,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Header/>
         {/*Switch component from react-router-dom to tell our app to switch between different routes, depending on the URL*/}
         <Switch>
           {/* Route component, also given to us by react-router-dom to create a route for the root path('/'),
