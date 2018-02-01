@@ -19,12 +19,12 @@ class CreateTodoForm extends Component {
       todo: event.target.value
     })
   }
-
   onFormSubmit(event){
     //prevent the default action as form submission will cause a request to fire
     event.preventDefault()
     // instantiate a variable todo from the state
     let todo = this.state.todo
+    // pass createTodo from the container as props
     this.props.createTodo(todo)
     // set the todo property of the state as an empty string
     this.setState({
